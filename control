@@ -1,0 +1,9 @@
+Package: de.saadat603.vibrantclock
+Name: VibrantClock
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Make your clock vibrant!
+Maintainer: Saadat Baig
+Author: Saadat Baig
+Section: Tweaks
