@@ -2,7 +2,7 @@
 // No Source-Code was provided at the time of making this
 // reconstructed thanks to IDA-Pro.
 
-%hook SBDashBoardView
+%hook LockScreenView
 
 -(void)setDateViewIsVibrant:(BOOL)arg1 {
     %orig(YES);
@@ -10,12 +10,10 @@
 
 %end
 
-// Added iOS 13 support by Tr1Fecta-7
-
-%hook CSCoverSheetView
-
--(void)setDateViewIsVibrant:(BOOL)arg1 {
-    %orig(YES);
+%ctor {
+    // Added iOS 13 support by Tr1Fecta-7
+    
+    // Check if CSCoverSheetView exists, if so use CSCoverSheetView's class to hook, else use SBDashBoardView
+    Class lockScreenViewClass = %c(CSCoverSheetView) ?: %c(SBDashBoardView);
+    %init(_ungrouped, LockScreenView=lockScreenViewClass);
 }
-
-%end
